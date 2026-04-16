@@ -1,203 +1,181 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <title>Tour 360</title>
+    <meta charset="UTF-8">
+    <title>Tour IES Alguadaira</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
-    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
 
     <style>
         html, body {
             margin: 0;
+            width: 100%;
             height: 100%;
-            overflow: hidden;
         }
+
         #panorama {
             width: 100%;
             height: 100vh;
         }
     </style>
 </head>
+
 <body>
+    <div id="panorama"></div>
 
-<div id="panorama"></div>
+    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
 
-<script>
-    pannellum.viewer('panorama', {
-        "default": {
-            "firstScene": "entrada1",
-            "sceneFadeDuration": 1000,
-            "autoLoad": true
-        },
-
-        "scenes": {
-
-            "entrada1": {
-                "title": "Entrada 1",
-                "type": "equirectangular",
-                "panorama": "Entrada 1.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 30,
-                        "type": "scene",
-                        "text": "Ir a Hall 2",
-                        "sceneId": "hall2"
-                    }
-                ]
+    <script>
+        pannellum.viewer('panorama', {
+            default: {
+                firstScene: 'entrada',
+                autoLoad: true,
+                sceneFadeDuration: 1000
             },
 
-            "hall2": {
-                "title": "Hall 2",
-                "type": "equirectangular",
-                "panorama": "Hall 2.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Volver a Entrada 1",
-                        "sceneId": "entrada1"
-                    },
-                    {
-                        "pitch": 0,
-                        "yaw": 0,
-                        "type": "scene",
-                        "text": "Ir a Patio 3",
-                        "sceneId": "patio3"
-                    }
-                ]
-            },
+            scenes: {
+                entrada: {
+                    title: 'Entrada',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/entrada1.png',
+                    hotSpots: [
+                        {
+                            pitch: -6,
+                            yaw: 0,
+                            type: 'scene',
+                            text: 'Ir al hall',
+                            sceneId: 'hall'
+                        }
+                    ]
+                },
 
-            "patio3": {
-                "title": "Patio 3",
-                "type": "equirectangular",
-                "panorama": "Patio 3.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 40,
-                        "type": "scene",
-                        "text": "Ir a Huerto 5",
-                        "sceneId": "huerto5"
-                    },
-                    {
-                        "pitch": 0,
-                        "yaw": -40,
-                        "type": "scene",
-                        "text": "Ir a Carpa 4",
-                        "sceneId": "carpa4"
-                    },
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Ir a Hall 2",
-                        "sceneId": "hall2"
-                    }
-                ]
-            },
+                hall: {
+                    title: 'Hall',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/hall_2.png',
+                    hotSpots: [
+                        {
+                            pitch: 0,
+                            yaw: -50,
+                            type: 'scene',
+                            text: 'Ir al patio',
+                            sceneId: 'patio'
+                        },
+                        {
+                            pitch: -3,
+                            yaw: 90,
+                            type: 'scene',
+                            text: 'Volver a la entrada',
+                            sceneId: 'entrada'
+                        }
+                    ]
+                },
 
-            "huerto5": {
-                "title": "Huerto 5",
-                "type": "equirectangular",
-                "panorama": "Huerto 5.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Volver a Patio 3",
-                        "sceneId": "patio3"
-                    },
-                    {
-                        "pitch": 0,
-                        "yaw": 40,
-                        "type": "scene",
-                        "text": "Ir a Gradas 6",
-                        "sceneId": "gradas6"
-                    }
-                ]
-            },
+                patio: {
+                    title: 'Patio',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/patio3.png',
+                    hotSpots: [
+                        {
+                            pitch: -8,
+                            yaw: 25,
+                            type: 'scene',
+                            text: 'Ir a carpa',
+                            sceneId: 'carpa'
+                        },
+                        {
+                            pitch: -10,
+                            yaw: -160,
+                            type: 'scene',
+                            text: 'Ir al huerto',
+                            sceneId: 'huerto'
+                        },
+                        {
+                            pitch: -8,
+                            yaw: 60,
+                            type: 'scene',
+                            text: 'Volver al hall',
+                            sceneId: 'hall'
+                        }
+                    ]
+                },
 
-            "gradas6": {
-                "title": "Gradas 6",
-                "type": "equirectangular",
-                "panorama": "Gradas 6.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Volver a Huerto 5",
-                        "sceneId": "huerto5"
-                    },
-                    {
-                        "pitch": 0,
-                        "yaw": 0,
-                        "type": "scene",
-                        "text": "Ir a Rincón Mujer 7",
-                        "sceneId": "rinconmujer7"
-                    }
-                ]
-            },
+                carpa: {
+                    title: 'Carpa',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/carpa-4.png',
+                    hotSpots: [
+                        {
+                            pitch: -4,
+                            yaw: 180,
+                            type: 'scene',
+                            text: 'Volver al patio',
+                            sceneId: 'patio'
+                        }
+                    ]
+                },
 
-            "rinconmujer7": {
-                "title": "Rincón Mujer 7",
-                "type": "equirectangular",
-                "panorama": "RinconMujer 7.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Volver a Gradas 6",
-                        "sceneId": "gradas6"
-                    }
-                ]
-            },
+                huerto: {
+                    title: 'Huerto',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/huerto_5.jpg',
+                    hotSpots: [
+                        {
+                            pitch: 3,
+                            yaw: 87,
+                            type: 'scene',
+                            text: 'Volver al patio',
+                            sceneId: 'patio'
+                        },
+                        {
+                            pitch: -2,
+                            yaw: -100,
+                            type: 'scene',
+                            text: 'Ir a las gradas',
+                            sceneId: 'gradas'
+                        }
+                    ]
+                },
 
-            "carpa4": {
-                "title": "Carpa 4",
-                "type": "equirectangular",
-                "panorama": "Carpa 4.jpg",
-                "hfov": 110,
-                "pitch": 0,
-                "yaw": 0,
-                "hotSpots": [
-                    {
-                        "pitch": 0,
-                        "yaw": 180,
-                        "type": "scene",
-                        "text": "Volver a Patio 3",
-                        "sceneId": "patio3"
-                    }
-                ]
+                gradas: {
+                    title: 'Gradas',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/gradas_6.png',
+                    hotSpots: [
+                        {
+                            pitch: -3,
+                            yaw: -118,
+                            type: 'scene',
+                            text: 'Ir al rincón de la mujer',
+                            sceneId: 'rinconMujer'
+                        },
+                        {
+                            pitch: 2,
+                            yaw: 134,
+                            type: 'scene',
+                            text: 'Volver al huerto',
+                            sceneId: 'huerto'
+                        }
+                    ]
+                },
+
+                rinconMujer: {
+                    title: 'Rincón de la mujer',
+                    type: 'equirectangular',
+                    panorama: 'assets/scenes/rincon_mujer_7.png',
+                    hotSpots: [
+                        {
+                            pitch: 0,
+                            yaw: 126,
+                            type: 'scene',
+                            text: 'Volver a gradas',
+                            sceneId: 'gradas'
+                        }
+                    ]
+                }
             }
-
-        }
-    });
-</script>
-
+        });
+    </script>
 </body>
 </html>
-
